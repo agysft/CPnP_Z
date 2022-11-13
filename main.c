@@ -282,7 +282,7 @@ void main(void)
         if (LCD) { LCD_xy(4,1); LCD_str2( DisplayData ); }
 
 
-        /* schematics 
+        /* schematics ZX board 
          * Rev.04
          *  RC3: T input    =GPIO input
          *  RC5: 2.5W/500mW =GPIO input
@@ -296,7 +296,7 @@ void main(void)
         while(i < 80){    //Wait for a continuous high-level for 80mS
             __delay_us(1000);
             i++;
-            if(RC3 ==0){    // "RC3" until rev.4, and "RC5" after rev.5, "true" is no laser
+            if(RC5 ==0){    // "RC3" until rev.4, and "RC5" after rev.5, "true" is no laser
                 i=0;
                 k++;
                 if(k>500){
@@ -308,11 +308,11 @@ void main(void)
         if(Laser == 1){
             for(j=0;j<7;j++){
                 ReadData[j]=0;
-                while(RC3==1){}// "RC3" until rev.4, and "RC5" after rev.5
+                while(RC5==1){}// "RC3" until rev.4, and "RC5" after rev.5
                 __delay_us(7500);
                 for(i=0;i<8;i++){
                     ReadData[j] = ReadData[j] >> 1 ;
-                    if(RC3==1){// "RC3" until rev.4, and "RC5" after rev.5
+                    if(RC5==1){// "RC3" until rev.4, and "RC5" after rev.5
                         ReadData[j] =  ReadData[j] | 0b10000000 ;
                     }
                     __delay_us(5000);
@@ -335,7 +335,7 @@ void main(void)
         {
             /* pressure sensor after schematics rev.5 */
             ADC_Initialize();   //required this
-            ADC_SelectChannel(channel_AN3); //channel_AN7
+            ADC_SelectChannel(channel_AN7); //channel_AN7
             ADC_StartConversion();
             while(!ADC_IsConversionDone());
             convertedValue = ADC_GetConversionResult();

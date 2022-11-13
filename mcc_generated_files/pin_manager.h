@@ -146,19 +146,19 @@
 #define IO_RC2_SetAnalogMode()      do { ANSELCbits.ANSC2 = 1; } while(0)
 #define IO_RC2_SetDigitalMode()     do { ANSELCbits.ANSC2 = 0; } while(0)
 
-// get/set IO_RC3 aliases
-#define IO_RC3_TRIS                 TRISCbits.TRISC3
-#define IO_RC3_LAT                  LATCbits.LATC3
-#define IO_RC3_PORT                 PORTCbits.RC3
-#define IO_RC3_ANS                  ANSELCbits.ANSC3
-#define IO_RC3_SetHigh()            do { LATCbits.LATC3 = 1; } while(0)
-#define IO_RC3_SetLow()             do { LATCbits.LATC3 = 0; } while(0)
-#define IO_RC3_Toggle()             do { LATCbits.LATC3 = ~LATCbits.LATC3; } while(0)
-#define IO_RC3_GetValue()           PORTCbits.RC3
-#define IO_RC3_SetDigitalInput()    do { TRISCbits.TRISC3 = 1; } while(0)
-#define IO_RC3_SetDigitalOutput()   do { TRISCbits.TRISC3 = 0; } while(0)
-#define IO_RC3_SetAnalogMode()      do { ANSELCbits.ANSC3 = 1; } while(0)
-#define IO_RC3_SetDigitalMode()     do { ANSELCbits.ANSC3 = 0; } while(0)
+// get/set channel_AN7 aliases
+#define channel_AN7_TRIS                 TRISCbits.TRISC3
+#define channel_AN7_LAT                  LATCbits.LATC3
+#define channel_AN7_PORT                 PORTCbits.RC3
+#define channel_AN7_ANS                  ANSELCbits.ANSC3
+#define channel_AN7_SetHigh()            do { LATCbits.LATC3 = 1; } while(0)
+#define channel_AN7_SetLow()             do { LATCbits.LATC3 = 0; } while(0)
+#define channel_AN7_Toggle()             do { LATCbits.LATC3 = ~LATCbits.LATC3; } while(0)
+#define channel_AN7_GetValue()           PORTCbits.RC3
+#define channel_AN7_SetDigitalInput()    do { TRISCbits.TRISC3 = 1; } while(0)
+#define channel_AN7_SetDigitalOutput()   do { TRISCbits.TRISC3 = 0; } while(0)
+#define channel_AN7_SetAnalogMode()      do { ANSELCbits.ANSC3 = 1; } while(0)
+#define channel_AN7_SetDigitalMode()     do { ANSELCbits.ANSC3 = 0; } while(0)
 
 // get/set RC4 procedures
 #define RC4_SetHigh()            do { LATCbits.LATC4 = 1; } while(0)

@@ -278,7 +278,7 @@ void main(void)
         convertedValue = ADC_GetConversionResult();
 
         convertedValue = (VDDValue100 * (uint32_t)convertedValue ) >> 10;
-        sprintf(DisplayData, "%dmA", convertedValue ); 
+        sprintf(DisplayData, "%dmA ", convertedValue ); 
         if (LCD) { LCD_xy(4,1); LCD_str2( DisplayData ); }
 
 
@@ -341,7 +341,7 @@ void main(void)
             convertedValue = ADC_GetConversionResult();
 
             convertedValue = (VDDValue100 * (uint32_t)convertedValue ) >> 10;
-            LCD_Meter15R(convertedValue>>1);
+            LCD_Meter15R((convertedValue-40) >>4);
             sprintf(DisplayData, "%d", convertedValue ); 
             if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
 

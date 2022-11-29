@@ -259,6 +259,10 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </Tool>
+      <XC8-CO>
+        <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
+      </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
         <property key="gcc-opt-driver-new" value="true"/>
@@ -485,6 +489,10 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </Tool>
+      <XC8-CO>
+        <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
+      </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
         <property key="gcc-opt-driver-new" value="true"/>
@@ -646,7 +654,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-7ff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -691,7 +699,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-7ff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -711,6 +719,10 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </Tool>
+      <XC8-CO>
+        <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
+      </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
         <property key="gcc-opt-driver-new" value="true"/>

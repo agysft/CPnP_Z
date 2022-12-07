@@ -4,14 +4,13 @@
 The ADC of this PIC is designed to be full scale with the supply voltage. 2.048V reference voltage is used as ADC. From that value, the voltage at full scale is obtained by backward calculation.
 ```mermaid
 graph TD;
-    A[ADC Ref Voltage]-->B[ADC the LED current];
-    B---H[Display it as a numerical value];
+    A[ADC_Ref_Voltage]-->B[ADC_LED_current];
+    B---H[Display];
     H-->C{Determine the presence or absence of Laser};
-    C--|If a laser is present|-->D;
-    C--|No Laser|-->E;
-    D[Display Laser temperature];
-    E[ADC the pressure sensor output]---F[Display it as a meter];
-    F---G[Display it numerically];
-    G-->A;
+    C--|laser_is_present|-->D[Display_Laser_temperature];
     D-->A;
+    C--|No_Laser|-->E[ADC_pressure];
+    E---F[Display_meter];
+    F---G[Display];
+    G-->A;
 ```

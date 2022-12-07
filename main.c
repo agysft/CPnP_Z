@@ -340,8 +340,8 @@ void main(void)
             while(!ADC_IsConversionDone());
             convertedValue = ADC_GetConversionResult();
 
-            convertedValue = (VDDValue100 * (uint32_t)convertedValue ) >> 10;
-            LCD_Meter15R((convertedValue-40) >>4);
+            convertedValue = ((VDDValue100 * (uint32_t)convertedValue ) >> 10);
+            LCD_Meter15R((convertedValue-50) >>4);
             sprintf(DisplayData, "%d", convertedValue ); 
             if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
 

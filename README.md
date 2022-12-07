@@ -8,9 +8,9 @@ flowchart TD;
     B---H[Display];
     H-->C{{Determine the presence or absence of Laser}};
     C-->|laser is present|D[Display Laser temperature];
-    D-->A;
     C-->|No Laser|E[ADC pressure];
     E---F[Display meter];
     F---G[Display];
     G-->A;
+    D-->A;
 ```

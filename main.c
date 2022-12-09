@@ -312,6 +312,13 @@ void main(void)
             if (LCD) { LCD_clear(); }
             sprintf(DisplayData, "T=%2d.%1d%cC", ReadData[4], ReadData[5], 0xf2);
             if (LCD) { LCD_xy(0,0); LCD_str2( DisplayData ); }
+            sprintf(DisplayData, "%2x", ReadData[3]);
+            if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
+            if(ReadData[3]==0x24){
+                PWM3DCH=0xC;PWM3DCL=0x2;
+            } else {
+                PWM3DCH=0x1;PWM3DCL=0x0;
+            }
         }
         else
         {

@@ -233,27 +233,12 @@ void main(void)
         0x1b,0x00,0x00,0x00,0x00,0x00,0x00,0x1b};
     LCD_SetCG(CG);
     
-//    for(int i=0;i<15;i++){
-//        LCD_Level15R(i);
-//        __delay_ms(100);
-//    }
-//    for(i=0;i<16;i++){
-//        LCD_Meter15R(i);
-//        __delay_ms(100);
-//    }
-//    for(i=15;i>0;i--){
-//        LCD_Meter15R(i);
-//        __delay_ms(100);
-//    }
-//    LCD_Meter15R(0);
-
 //    if (LCD) { LCD_xy(0,0); LCD_str2("Compact "); }
 //    if (LCD) { LCD_xy(0,1); LCD_str2(" PnP n.k"); }
 //    __delay_ms(1000);
 
     uint16_t convertedValue;
     uint32_t VDDValue100;
-    //uint16_t VDDValue100;
     int CalculatedResult;
 
     ADC_Initialize();
@@ -283,9 +268,6 @@ void main(void)
 
 
         /* schematics ZX board 
-         * Rev.04
-         *  RC3: T input    =GPIO input
-         *  RC5: 2.5W/500mW =GPIO input
          * Rev.05
          *  RC3: Vacuum ADC =input Analog7
          *  RC5: T input    =GPIO input
@@ -296,7 +278,7 @@ void main(void)
         while(i < 80){    //Wait for a continuous high-level for 80mS
             __delay_us(1000);
             i++;
-            if(RC5 ==0){    // "RC3" until rev.4, and "RC5" after rev.5, "true" is no laser
+            if(RC5 ==0){    // 0 = No laser
                 i=0;
                 k++;
                 if(k>500){
@@ -308,11 +290,11 @@ void main(void)
         if(Laser == 1){
             for(j=0;j<7;j++){
                 ReadData[j]=0;
-                while(RC5==1){}// "RC3" until rev.4, and "RC5" after rev.5
+                while(RC5==1){}
                 __delay_us(7500);
                 for(i=0;i<8;i++){
                     ReadData[j] = ReadData[j] >> 1 ;
-                    if(RC5==1){// "RC3" until rev.4, and "RC5" after rev.5
+                    if(RC5==1){
                         ReadData[j] =  ReadData[j] | 0b10000000 ;
                     }
                     __delay_us(5000);
@@ -333,7 +315,7 @@ void main(void)
         }
         else
         {
-            /* pressure sensor after schematics rev.5 */
+            /* read pressure sensor */
             ADC_Initialize();   //required this
             ADC_SelectChannel(channel_AN7); //channel_AN7
             ADC_StartConversion();

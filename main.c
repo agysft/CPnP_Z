@@ -321,9 +321,9 @@ void main(void)
             sprintf(DisplayData, "%2x", ReadData[3]);
             if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
             if(ReadData[3]==0x24){
-                PWM3DCH=0xC;PWM3DCL=0x2;
+                PWM3DCH=0x2;PWM3DCL=0x40;   //Duty Cycle: 0.89%
             } else {
-                PWM3DCH=0x1;PWM3DCL=0x0;
+                PWM3DCH=0x1;PWM3DCL=0x0;    //Duty Cycle: 0.39%
             }
         }
         else

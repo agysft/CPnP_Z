@@ -269,7 +269,13 @@ void main(void)
 
         /* schematics ZX board 
          * Rev.05
+         *  RA2: Laser OUT
+         *  (CLC1 Out:
+         *     Normally, RA5(CLC1IN1) is output directly.
+         *     When RC4(CLC2IN1) is Low, output fixed duty cycle.)
+         *  RC2: LED blue
          *  RC3: Vacuum ADC =input Analog7
+         *  RC4: Push-SW for Laser Marker
          *  RC5: T input    =GPIO input
          */
         i = 0;
@@ -335,7 +341,7 @@ void main(void)
             if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
 
         }
-        if (RC4 == 0) { //blue LED
+        if (RC4 == 0) { //RC4 is Push-SW for Laser Marker
             RC2=1;
         } else {
             RC2=0;

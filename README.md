@@ -12,6 +12,8 @@ flowchart TD;
     E---F[Display meter];
     F---G[Display];
     G-->A;
-    C-->|laser is present|D[Display Laser temperature];
-    D-->A;
+    C-->|laser is present|D[Read serial from laser];
+    D---D2[Display Laser temperature];
+    D2---D3[Set Laser Marker Brightness];
+    D3-->A;
 ```

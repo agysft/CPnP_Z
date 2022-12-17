@@ -257,7 +257,7 @@ void main(void)
 
         /* Measure LED Current value */
         ADC_Initialize();   //required this
-        ADC_SelectChannel(channel_AN3);
+        ADC_SelectChannel(channel_AN3); //channel_AN3=current sensor
         ADC_StartConversion();
         while(!ADC_IsConversionDone());
         convertedValue = ADC_GetConversionResult();
@@ -278,17 +278,22 @@ void main(void)
          *  RC4: Push-SW for Laser Marker
          *  RC5: T input    =GPIO input
          */
+        /*
+         * If continuous low-level for 500ms, judge no laser.
+         * Wait for a continuous high-level for 80mS
+         *  = Detects breaks in the data sequence
+         */
         i = 0;
         k = 0;
         Laser = 1;  // Laser-Connected
-        while(i < 80){    //Wait for a continuous high-level for 80mS
+        while(i < 80){    //80ms
             __delay_us(1000);
             i++;
             if(RC5 ==0){    // 0 = No laser
                 i=0;
                 k++;
                 if(k>500){
-                    Laser = 0;  // No Laser
+                    Laser = 0;  // Determine No Laser
                     break;
                 }
             }
@@ -296,7 +301,7 @@ void main(void)
         if(Laser == 1){
             for(j=0;j<7;j++){
                 ReadData[j]=0;
-                while(RC5==1){}
+                while(RC5==1){} //The edge detect of start-bit
                 __delay_us(7500);
                 for(i=0;i<8;i++){
                     ReadData[j] = ReadData[j] >> 1 ;
@@ -320,7 +325,7 @@ void main(void)
             if (LCD) { LCD_xy(0,0); LCD_str2( DisplayData ); }
             sprintf(DisplayData, "%2x", ReadData[3]);
             if (LCD) { LCD_xy(0,1); LCD_str2( DisplayData ); }
-            if(ReadData[3]==0x24){
+            if(ReadData[3]==0x24){  //0x24=500mW Laser, 0x25=2.5W Laser
                 PWM3DCH=0x2;PWM3DCL=0x40;   //Duty Cycle: 0.89%
             } else {
                 PWM3DCH=0x1;PWM3DCL=0x0;    //Duty Cycle: 0.39%
@@ -328,9 +333,9 @@ void main(void)
         }
         else
         {
-            /* read pressure sensor */
+            /* read the air pressure in pipe */
             ADC_Initialize();   //required this
-            ADC_SelectChannel(channel_AN7); //channel_AN7
+            ADC_SelectChannel(channel_AN7); //channel_AN7=pressure sensor
             ADC_StartConversion();
             while(!ADC_IsConversionDone());
             convertedValue = ADC_GetConversionResult();

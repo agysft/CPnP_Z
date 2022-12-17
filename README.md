@@ -7,15 +7,15 @@ The temperature of the laser can be known via serial. When the laser is connecte
 ```mermaid
 flowchart TD;
     I([START])---A;
-    A[ADC Ref Voltage]-->B[ADC LED current];
-    B---H[Display];
-    H-->C{{With or without Laser?}};
-    C-->|No Laser|E[ADC pressure];
-    E---F[Display meter];
-    F---G[Display];
+    A[AD convert FVR]-->B[AD convert current of Upper-Light];
+    B---H[Display numerical value];
+    H---C{{With or without Laser?}};
+    C-->|No Laser|E[AD convert of air pressure in pipe];
+    E---F[[Display by meter]];
+    F---G[Display numerical value];
     G-->A;
-    C-->|Laser is present|D[Read serial from Laser];
+    C-->|Laser is present|D[Read Laser-temp via serial];
     D---D2[Display Laser temperature];
-    D2---D3[Set Laser Marker Brightness];
+    D2---D3[Set Laser-marker Brightness];
     D3-->A;
 ```

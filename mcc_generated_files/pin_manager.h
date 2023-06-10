@@ -65,6 +65,40 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set channel_AN0 aliases
+#define channel_AN0_TRIS                 TRISAbits.TRISA0
+#define channel_AN0_LAT                  LATAbits.LATA0
+#define channel_AN0_PORT                 PORTAbits.RA0
+#define channel_AN0_WPU                  WPUAbits.WPUA0
+#define channel_AN0_ANS                  ANSELAbits.ANSA0
+#define channel_AN0_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
+#define channel_AN0_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
+#define channel_AN0_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
+#define channel_AN0_GetValue()           PORTAbits.RA0
+#define channel_AN0_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
+#define channel_AN0_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
+#define channel_AN0_SetPullup()          do { WPUAbits.WPUA0 = 1; } while(0)
+#define channel_AN0_ResetPullup()        do { WPUAbits.WPUA0 = 0; } while(0)
+#define channel_AN0_SetAnalogMode()      do { ANSELAbits.ANSA0 = 1; } while(0)
+#define channel_AN0_SetDigitalMode()     do { ANSELAbits.ANSA0 = 0; } while(0)
+
+// get/set IO_RA1 aliases
+#define IO_RA1_TRIS                 TRISAbits.TRISA1
+#define IO_RA1_LAT                  LATAbits.LATA1
+#define IO_RA1_PORT                 PORTAbits.RA1
+#define IO_RA1_WPU                  WPUAbits.WPUA1
+#define IO_RA1_ANS                  ANSELAbits.ANSA1
+#define IO_RA1_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
+#define IO_RA1_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
+#define IO_RA1_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
+#define IO_RA1_GetValue()           PORTAbits.RA1
+#define IO_RA1_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
+#define IO_RA1_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
+#define IO_RA1_SetPullup()          do { WPUAbits.WPUA1 = 1; } while(0)
+#define IO_RA1_ResetPullup()        do { WPUAbits.WPUA1 = 0; } while(0)
+#define IO_RA1_SetAnalogMode()      do { ANSELAbits.ANSA1 = 1; } while(0)
+#define IO_RA1_SetDigitalMode()     do { ANSELAbits.ANSA1 = 0; } while(0)
+
 // get/set RA2 procedures
 #define RA2_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
 #define RA2_SetLow()             do { LATAbits.LATA2 = 0; } while(0)

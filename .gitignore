@@ -12,6 +12,8 @@ nbproject/*
 !nbproject/project.properties
 !nbproject/project.xml
 
+.ca/
+
 # etc.
 *.zip
 *.bak

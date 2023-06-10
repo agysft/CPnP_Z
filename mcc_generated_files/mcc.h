@@ -54,8 +54,8 @@
 #include <conio.h>
 #include "fvr.h"
 #include "pwm3.h"
-#include "tmr2.h"
 #include "clc2.h"
+#include "tmr2.h"
 #include "clc1.h"
 #include "adc.h"
 

@@ -263,6 +263,10 @@ void main(void)
         convertedValue = ADC_GetConversionResult();
 
         convertedValue = (VDDValue100 * (uint32_t)convertedValue ) >> 10;
+        /* 
+         * Rev.05 board may remove the display
+         *  as it does not detect well a large voltage drop in the LEDs
+         */
         sprintf(DisplayData, "%dmA ", convertedValue ); 
         if (LCD) { LCD_xy(4,1); LCD_str2( DisplayData ); }
 
